@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "state=0": {"model": "ecraft:boiler"},
+        "state=1": {"model": "ecraft:boiler_1"},
+        "state=2": {"model": "ecraft:boiler_2"},
+        "state=3": {"model": "ecraft:boiler_3"},
+        "state=4": {"model": "ecraft:boiler_4"},
+        "state=5": {"model": "ecraft:boiler_5"},
+        "state=6": {"model": "ecraft:boiler_6"},
+        "state=7": {"model": "ecraft:boiler_7"},
+        "state=8": {"model": "ecraft:boiler_8"},
+        "state=9": {"model": "ecraft:boiler_9"},
+        "state=10": {"model": "ecraft:boiler_10"},
+        "state=11": {"model": "ecraft:boiler_11"},
+        "state=12": {"model": "ecraft:boiler_12"},
+        "state=13": {"model": "ecraft:boiler_13"},
+        "state=14": {"model": "ecraft:boiler_14"},
+        "state=15": {"model": "ecraft:boiler_15"}
+    }
+}

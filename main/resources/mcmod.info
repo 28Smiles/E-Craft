@@ -1,0 +1,16 @@
+[
+{
+  "modid": "ecraft",
+  "name": "E-Craft Mod",
+  "description": "ENERGY EVERYWERE!",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["28Smiles"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

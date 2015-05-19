@@ -1,0 +1,36 @@
+{
+    "__createdwith": "opl's Model Creator",
+    "ambientocclusion": false,
+    "textures": {
+        "side": "blocks/iron_block",
+        "top": "ecraft:blocks/top",
+        "bottom": "ecraft:blocks/bottom",
+        "particle": "ecraft:blocks/side"
+    },
+    "elements": [
+        {
+            "from": [1,0,1],
+            "to": [16,16,15],
+            "faces": {
+                "up": {
+                    "texture": "#top"
+                },
+                "down": {
+                    "texture": "#bottom"
+                },
+                "west": {
+                    "texture": "#side"
+                },
+                "east": {
+                    "texture": "#side"
+                },
+                "north": {
+                    "texture": "#side"
+                },
+                "south": {
+                    "texture": "#side"
+                }
+            }
+        }
+    ]
+}

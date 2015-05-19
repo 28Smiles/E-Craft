@@ -1,0 +1,36 @@
+package de.ecraft.container;
+
+import de.ecraft.tileentitys.TileEntityBoiler;
+import de.ecraft.tileentitys.TileEntityBoilerMB;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
+
+public class ContainerBoiler extends Container {
+
+	public TileEntityBoiler tileentity;
+	
+	public ContainerBoiler(TileEntityBoiler tileentity, IInventory playerInventory) {
+		this.tileentity = tileentity;
+		
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 9; ++j)
+			{
+				this.addSlotToContainer(new Slot(playerInventory, j + i * 9 + 9, j * 18 + 8, i * 18 + 84));
+			}
+		}
+
+		for (int i = 0; i < 9; i++)
+		{
+			this.addSlotToContainer(new Slot(playerInventory, i, i * 18 + 8, 142));
+		}
+	}
+	
+	@Override
+	public boolean canInteractWith(EntityPlayer arg0) {
+		return true;
+	}
+
+}

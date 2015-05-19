@@ -1,0 +1,75 @@
+{
+    "textures": {
+        "top": "ecraft:blocks/pipe_steam_top",
+        "side": "ecraft:blocks/pipe_steam"
+    },
+    "ambientocclusion": false,
+    "elements": [
+        {
+            "from": [4,4,0],
+            "to": [12,12,16],
+            "faces": {
+                "up": {
+                    "texture": "#side"
+                },
+                "down": {
+                    "texture": "#side"
+                },
+                "west": {
+                    "texture": "#side"
+                },
+                "east": {
+                    "texture": "#side"
+                },
+                "north": {
+                    "texture": "#top"
+                },
+                "south": {
+                    "texture": "#top"
+                }
+            }
+        },
+        {
+            "from": [0,4,4],
+            "to": [4,12,12],
+            "faces": {
+                "up": {
+                    "texture": "#side"
+                },
+                "down": {
+                    "texture": "#side"
+                },
+                "west": {
+                    "texture": "#top"
+                },
+                "north": {
+                    "texture": "#side"
+                },
+                "south": {
+                    "texture": "#side"
+                }
+            }
+        },
+        {
+            "from": [12,4,4],
+            "to": [16,12,12],
+            "faces": {
+                "up": {
+                    "texture": "#side"
+                },
+                "down": {
+                    "texture": "#side"
+                },
+                "east": {
+                    "texture": "#top"
+                },
+                "north": {
+                    "texture": "#side"
+                },
+                "south": {
+                    "texture": "#side"
+                }
+            }
+        }
+    ]
+}

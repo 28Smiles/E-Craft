@@ -1,0 +1,33 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "top": "ecraft:blocks/pipe_steam_top",
+        "side": "ecraft:blocks/pipe_steam"
+    },
+    "elements": [
+        {
+            "from": [4,4,4],
+            "to": [12,12,12],
+            "faces": {
+                "up": {
+                    "texture": "#side"
+                },
+                "down": {
+                    "texture": "#side"
+                },
+                "west": {
+                    "texture": "#side"
+                },
+                "east": {
+                    "texture": "#side"
+                },
+                "north": {
+                    "texture": "#side"
+                },
+                "south": {
+                    "texture": "#side"
+                }
+            }
+        }
+    ]
+}
