@@ -1,2 +1,9 @@
 container.solid_fuel_burner=Solidfuelburner
-tile.solid_fuel_burner=Solidfuelburner
+tile.solid_fuel_burner.name=Solidfuelburner
+container.boiler=Boiler
+tile.boiler.name=Boiler
+container.boiler_mb=Boiler
+tile.boiler_mb.name=Boiler
+container.steam_pipe=Steampipe
+container.stirling_engine=Stirlingengine
+tile.stirling_engine.name=Stirlingengine

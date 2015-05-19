@@ -27,12 +27,14 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class TileEntityBoilerMB extends TileEntityBoiler {
 	
 	public BlockPos[] bigboiler = new BlockPos[0];
+	
 	/** Steam in L */
 	public float steam = 0;
 	
-	public static final int boiler_size = 10000;
+	/** Boiler in mB */
+	public static final float boiler_size = 10000;
 	
-	private List<BlockPos> sinks = null;
+	private List<BlockPos> sinks = new ArrayList<BlockPos>();
 	
 	@Override
 	public void update() {
@@ -51,14 +53,17 @@ public class TileEntityBoilerMB extends TileEntityBoiler {
 					if(worldObj.getTileEntity(bp) instanceof TileEntityBoiler)
 						((TileEntityBoiler)worldObj.getTileEntity(bp)).heat = (getMJpK() * DataValues.normalTemp) / (float)bigboiler.length;
 		if(getTemperature() > (DataValues.normalTemp + 100)) {
-			steam += waterToSteam(1) * DataValues.LmB * DataValues.VsteamMkg;
+			steam += waterToSteam((int)((getTemperature() - DataValues.normalTemp) * 0.01F)) * DataValues.LmB * DataValues.VsteamMkg;
 		}
+		if(steam > 0)
+			steam -= handleSteamOutput(worldObj, sinks, steam * DataValues.LmB, steam * DataValues.LmB, boiler_size * bigboiler.length * DataValues.LmB, true);
 		super.update();
 	}
 	
 	@Override
 	public List<BlockPos> updateNetwork(World world, BlockPos pos, List<BlockPos> list) {
 		List<BlockPos> nlist = new ArrayList<BlockPos>();
+		nlist.add(list.get(0));
 		for(BlockPos bp : bigboiler)
 			if(worldObj.getTileEntity(bp) != null)
 				if(worldObj.getTileEntity(bp) instanceof TileEntityBoiler)
@@ -163,7 +168,7 @@ public class TileEntityBoilerMB extends TileEntityBoiler {
 	 * Pressure in hPa
 	 */
 	public float getPressure() {
-		return 1013F * ((steam + (1000F * DataValues.LmB * bigboiler.length)) / (DataValues.LmB * 1000F * bigboiler.length));
+		return 1013F * ((steam + (DataValues.LmB * boiler_size * bigboiler.length)) / (DataValues.LmB * boiler_size * bigboiler.length));
 	}
 	
 	@Override
@@ -212,8 +217,10 @@ public class TileEntityBoilerMB extends TileEntityBoiler {
 				if(amount > 0)
 				if(worldObj.getTileEntity(bigboiler[i]) != null) {
 					FluidStack t = ((TileEntityBoiler)worldObj.getTileEntity(bigboiler[i])).waterTank.drain(amount, true);
-					a += t.amount;
-					amount -= t.amount;
+					if(t != null) {
+						a += t.amount;
+						amount -= t.amount;
+					}
 				}
 		float w_heat = (((float)a) * DataValues.VsteamMkg * DataValues.LmB * DataValues.kJsteamTkelvin * 10F) / bigboiler.length;
 		for(int i = 0; i < bigboiler.length; i++)

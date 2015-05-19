@@ -93,7 +93,7 @@ public class TileEntityBoiler extends TileEntity implements IUpdatePlayerListBox
 	
 	@Override
 	public void writeToNBT(NBTTagCompound nbttc) {
-		nbttc.setFloat("heat", heat);
+		nbttc.setFloat("bheat", heat);
 		waterTank.writeToNBT(nbttc);
 		NbtHelper.setBlockPos(nbttc, master_boiler, "master");
 		super.writeToNBT(nbttc);
@@ -101,25 +101,10 @@ public class TileEntityBoiler extends TileEntity implements IUpdatePlayerListBox
 	
 	@Override
 	public void readFromNBT(NBTTagCompound nbttc) {
-		heat = nbttc.getFloat("heat");
+		heat = nbttc.getFloat("bheat");
 		waterTank = waterTank.readFromNBT(nbttc);
 		master_boiler = NbtHelper.getBlockPos(nbttc, "master");
 		super.readFromNBT(nbttc);
-	}
-	
-	@Override
-	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
-	{
-		NBTTagCompound tagCom = pkt.getNbtCompound();
-		this.readFromNBT(tagCom);
-	}
-
-	@Override
-	public Packet getDescriptionPacket()
-	{
-		NBTTagCompound tagCom = new NBTTagCompound();
-		this.writeToNBT(tagCom);
-		return new S35PacketUpdateTileEntity(pos, getBlockMetadata(), tagCom);
 	}
 	
 	public void neightbourChange(World world, BlockPos bp) {

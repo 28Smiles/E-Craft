@@ -58,17 +58,17 @@ public class SteamPipe extends Block implements ITileEntityProvider, IBlockSteam
 		List<BlockPos> list = new ArrayList<BlockPos>();
 		list.add(pos);
 		if((world.getTileEntity((pos.north())) instanceof ISteamNetworkPart))
-			((ISteamPipe)world.getTileEntity(pos.north())).updateNetwork(world, pos.north(), list);
+			((ISteamNetworkPart)world.getTileEntity(pos.north())).updateNetwork(world, pos.north(), list);
 		if((world.getTileEntity((pos.south())) instanceof ISteamNetworkPart))
-			((ISteamPipe)world.getTileEntity(pos.south())).updateNetwork(world, pos.south(), list);
+			((ISteamNetworkPart)world.getTileEntity(pos.south())).updateNetwork(world, pos.south(), list);
 		if((world.getTileEntity((pos.west())) instanceof ISteamNetworkPart))
-			((ISteamPipe)world.getTileEntity(pos.west())).updateNetwork(world, pos.west(), list);
+			((ISteamNetworkPart)world.getTileEntity(pos.west())).updateNetwork(world, pos.west(), list);
 		if((world.getTileEntity((pos.east())) instanceof ISteamNetworkPart))
-			((ISteamPipe)world.getTileEntity(pos.east())).updateNetwork(world, pos.east(), list);
+			((ISteamNetworkPart)world.getTileEntity(pos.east())).updateNetwork(world, pos.east(), list);
 		if((world.getTileEntity((pos.up())) instanceof ISteamNetworkPart))
-			((ISteamPipe)world.getTileEntity(pos.up())).updateNetwork(world, pos.up(), list);
+			((ISteamNetworkPart)world.getTileEntity(pos.up())).updateNetwork(world, pos.up(), list);
 		if((world.getTileEntity((pos.down())) instanceof ISteamNetworkPart))
-			((ISteamPipe)world.getTileEntity(pos.down())).updateNetwork(world, pos.down(), list);
+			((ISteamNetworkPart)world.getTileEntity(pos.down())).updateNetwork(world, pos.down(), list);
 		super.onBlockAdded(world, pos, bs);
 	}
 	
@@ -77,17 +77,17 @@ public class SteamPipe extends Block implements ITileEntityProvider, IBlockSteam
 		List<BlockPos> list = new ArrayList<BlockPos>();
 		list.add(pos);
 		if((world.getTileEntity((pos.north())) instanceof ISteamNetworkPart))
-			((ISteamPipe)world.getTileEntity(pos.north())).updateNetwork(world, pos.north(), list);
+			((ISteamNetworkPart)world.getTileEntity(pos.north())).updateNetwork(world, pos.north(), list);
 		if((world.getTileEntity((pos.south())) instanceof ISteamNetworkPart))
-			((ISteamPipe)world.getTileEntity(pos.south())).updateNetwork(world, pos.south(), list);
+			((ISteamNetworkPart)world.getTileEntity(pos.south())).updateNetwork(world, pos.south(), list);
 		if((world.getTileEntity((pos.west())) instanceof ISteamNetworkPart))
-			((ISteamPipe)world.getTileEntity(pos.west())).updateNetwork(world, pos.west(), list);
+			((ISteamNetworkPart)world.getTileEntity(pos.west())).updateNetwork(world, pos.west(), list);
 		if((world.getTileEntity((pos.east())) instanceof ISteamNetworkPart))
-			((ISteamPipe)world.getTileEntity(pos.east())).updateNetwork(world, pos.east(), list);
+			((ISteamNetworkPart)world.getTileEntity(pos.east())).updateNetwork(world, pos.east(), list);
 		if((world.getTileEntity((pos.up())) instanceof ISteamNetworkPart))
-			((ISteamPipe)world.getTileEntity(pos.up())).updateNetwork(world, pos.up(), list);
+			((ISteamNetworkPart)world.getTileEntity(pos.up())).updateNetwork(world, pos.up(), list);
 		if((world.getTileEntity((pos.down())) instanceof ISteamNetworkPart))
-			((ISteamPipe)world.getTileEntity(pos.down())).updateNetwork(world, pos.down(), list);
+			((ISteamNetworkPart)world.getTileEntity(pos.down())).updateNetwork(world, pos.down(), list);
 		super.onBlockHarvested(world, pos, arg2, arg3);
 	}
 	

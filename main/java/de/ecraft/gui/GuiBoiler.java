@@ -31,7 +31,7 @@ public class GuiBoiler extends GuiContainer {
 	
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mx, int my) {
-		this.fontRendererObj.drawString("Boiler", 8, 6, 4210752);
+		this.fontRendererObj.drawString(I18n.format("container.boiler", null), 8, 6, 4210752);
 		this.fontRendererObj.drawString(inventory_player.getDisplayName().getUnformattedText(), 8, (ySize - 96) + 2, 4210752);
 		String temp = ((float)Math.round(this.tile.getTemperature() * 100) / 100) + "°K";
 		this.fontRendererObj.drawString(temp, 75, 60, 4210752);

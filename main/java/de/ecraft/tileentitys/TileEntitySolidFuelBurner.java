@@ -5,6 +5,7 @@ import io.netty.buffer.ByteBuf;
 import java.io.IOException;
 
 import scala.util.Random;
+import de.ecraft.ConfigHandler;
 import de.ecraft.data.IHeatSink;
 import de.ecraft.data.IHeatSource;
 import net.minecraft.client.resources.I18n;
@@ -36,7 +37,11 @@ public class TileEntitySolidFuelBurner extends TileEntity implements ISidedInven
 	/** heat in MJ */
 	private float heat = 59600;
 	
-	public TileEntitySolidFuelBurner() {}
+	public TileEntitySolidFuelBurner() {
+		if(ConfigHandler.debug) {
+			heat = 9999999;
+		}
+	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound nbttc) {
@@ -199,7 +204,7 @@ public class TileEntitySolidFuelBurner extends TileEntity implements ISidedInven
 		}
 		if(burnTime > 0) {
 			burnTime--;
-			heat += 4;
+			heat += 6;
 		} else {
 			if(getTemperature() > 298)
 				heat -= 0.5F;

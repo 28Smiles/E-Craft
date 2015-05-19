@@ -1,2 +1,9 @@
 container.solid_fuel_burner=Feststoff Brenner
-tile.solid_fuel_burner=Feststoff Brenner
+tile.solid_fuel_burner.name=Feststoff Brenner
+container.boiler=Boiler
+tile.boiler.name=Boiler
+container.boiler_mb=Boiler
+tile.boiler_mb.name=Boiler
+container.steam_pipe=Dampfrohr
+container.stirling_engine=Stirling-Generator
+tile.stirling_engine.name=Stirling-Generator

@@ -14,7 +14,16 @@ public interface ISteamSink extends ISteamNetworkPart {
 		return list;
 	}
 	
-	public abstract float fillSteam(float steam, boolean doFill);
+	/**
+	 * 
+	 * @param amount maximum amount
+	 * @param steam steam amount in source
+	 * @param pressure pressure in source
+	 * @param tanksize steamtank in source
+	 * @param doFill
+	 * @return filled steam
+	 */
+	public abstract float fillSteam(float amount, float steam, float pressure, float tanksize, boolean doFill);
 	
 	public abstract float getSteam();
 	

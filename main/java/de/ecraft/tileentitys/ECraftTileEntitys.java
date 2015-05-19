@@ -10,5 +10,6 @@ public class ECraftTileEntitys {
 		GameRegistry.registerTileEntity(TileEntityBoiler.class, "ecraftboiler");
 		GameRegistry.registerTileEntity(TileEntityBoilerMB.class, "ecraftboilermb");
 		GameRegistry.registerTileEntity(TileEntitySteamPipe.class, "ecraftsteampipe");
+		GameRegistry.registerTileEntity(TileEntityStirlingEngine.class, "ecraftstirlingengine");
 	}
 }

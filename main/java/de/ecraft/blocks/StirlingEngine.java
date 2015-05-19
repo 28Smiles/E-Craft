@@ -5,9 +5,11 @@ import java.util.List;
 
 import com.google.common.base.Predicate;
 
+import de.ecraft.ECraft;
 import de.ecraft.api.conduit.steam.ISteamNetworkPart;
 import de.ecraft.api.conduit.steam.ISteamPipe;
 import de.ecraft.tileentitys.TileEntityBoiler;
+import de.ecraft.tileentitys.TileEntitySolidFuelBurner;
 import de.ecraft.tileentitys.TileEntityStirlingEngine;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
@@ -37,6 +39,17 @@ public class StirlingEngine extends Block implements ITileEntityProvider {
 	@Override
 	public IBlockState onBlockPlaced(final World w, final BlockPos coord, final EnumFacing face, final float partialX, final float partialY, final float partialZ, final int i, final EntityLivingBase placer) {
 		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing());
+	}
+	
+	public void onBlockPlacedBy(World p_onBlockPlacedBy_1_, BlockPos p_onBlockPlacedBy_2_, IBlockState p_onBlockPlacedBy_3_, EntityLivingBase p_onBlockPlacedBy_4_, ItemStack p_onBlockPlacedBy_5_)
+	{
+	    if (p_onBlockPlacedBy_5_.hasDisplayName())
+	    {
+	      TileEntity localTileEntity = p_onBlockPlacedBy_1_.getTileEntity(p_onBlockPlacedBy_2_);
+	      if ((localTileEntity instanceof TileEntitySolidFuelBurner)) {
+	        ((TileEntitySolidFuelBurner)localTileEntity).setCustomInventoryName(p_onBlockPlacedBy_5_.getDisplayName());
+	      }
+	    }
 	}
 	
 	@Override
@@ -75,6 +88,21 @@ public class StirlingEngine extends Block implements ITileEntityProvider {
 		if((world.getTileEntity((pos.down())) instanceof ISteamNetworkPart))
 			((ISteamPipe)world.getTileEntity(pos.down())).updateNetwork(world, pos.down(), list);
 		super.onBlockHarvested(world, pos, arg2, arg3);
+	}
+	
+	@Override
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ)
+	{
+		if (!world.isRemote)
+		{
+			TileEntity tile_entity = world.getTileEntity(pos);
+
+			if (tile_entity instanceof TileEntityStirlingEngine)
+			{
+				player.openGui(ECraft.INSTANCE, 2, world, pos.getX(), pos.getY(), pos.getZ());
+			}
+		}
+		return true;
 	}
 	
 	@Override
