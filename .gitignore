@@ -1,1 +1,3 @@
-*.class
+.git/
+.gitignore
+/main/java/de/ecraft

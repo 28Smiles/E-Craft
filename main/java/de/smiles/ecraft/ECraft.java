@@ -1,11 +1,14 @@
-package de.ecraft;
+package de.smiles.ecraft;
 
-import de.ecraft.blocks.ECraftBlocks;
-import de.ecraft.crafting.ECraftCrafting;
-import de.ecraft.items.ECraftItems;
-import de.ecraft.network.PacketHandler;
-import de.ecraft.proxy.CommonProxy;
-import de.ecraft.tileentitys.ECraftTileEntitys;
+import de.smiles.ecraft.blocks.ECraftBlocks;
+import de.smiles.ecraft.handlers.ECraftTileEntitys;
+import de.smiles.ecraft.handlers.ConfigHandler;
+import de.smiles.ecraft.handlers.ECraftCrafting;
+import de.smiles.ecraft.handlers.GuiHandler;
+import de.smiles.ecraft.handlers.InputHandler;
+import de.smiles.ecraft.items.ECraftItems;
+import de.smiles.ecraft.network.PacketHandler;
+import de.smiles.ecraft.proxy.CommonProxy;
 import net.minecraft.client.resources.I18n;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -19,22 +22,26 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 
+@Mod(modid = ECraft.MODID, version = ECraft.VERSION)
 public class ECraft {
 	
 	public static final String MODID = "ecraft";
     public static final String VERSION = "1.0.0";
     
+    @Instance(ECraft.MODID)
     public static ECraft INSTANCE;
     
-    public static final String CLIENT_PROXY = "de.ecraft.proxy.ClientProxy";
-    public static final String SERVER_PROXY = "de.ecraft.proxy.CommonProxy";
+    public static final String CLIENT_PROXY = "de.smiles.ecraft.proxy.ClientProxy";
+    public static final String SERVER_PROXY = "de.smiles.ecraft.proxy.CommonProxy";
     
+    @SidedProxy(clientSide = ECraft.CLIENT_PROXY, serverSide = ECraft.SERVER_PROXY)
     public static CommonProxy proxy;
     
     public static GuiHandler gui_handler;
     public static InputHandler key_handler;
     public static ConfigHandler config_handler;
     
+    @EventHandler
     public void init(FMLPreInitializationEvent event)
     {
     	/** Config */
@@ -52,6 +59,7 @@ public class ECraft {
 		PacketHandler.init();
     }
     
+    @EventHandler
     public void init(FMLInitializationEvent event)
     {
     	/** Render Registering */
@@ -73,6 +81,7 @@ public class ECraft {
     	}
     }
     
+    @EventHandler
     public void init(FMLPostInitializationEvent event)
     {
     	
