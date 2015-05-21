@@ -1,5 +1,7 @@
 package de.smiles.ecraft;
 
+import java.util.logging.Logger;
+
 import de.smiles.ecraft.blocks.ECraftBlocks;
 import de.smiles.ecraft.handlers.ECraftTileEntitys;
 import de.smiles.ecraft.handlers.ConfigHandler;
@@ -36,6 +38,8 @@ public class ECraft {
     
     @SidedProxy(clientSide = ECraft.CLIENT_PROXY, serverSide = ECraft.SERVER_PROXY)
     public static CommonProxy proxy;
+    
+    public static Logger logger = Logger.getLogger("E-Craft");
     
     public static GuiHandler gui_handler;
     public static InputHandler key_handler;
