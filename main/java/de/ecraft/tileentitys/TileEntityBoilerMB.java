@@ -38,25 +38,27 @@ public class TileEntityBoilerMB extends TileEntityBoiler {
 	
 	@Override
 	public void update() {
-		if(bigboiler.length == 0)
-			createMaster();
-		else if(bigboiler[0] == null)
-			createMaster();
-		if(getTemperature() > DataValues.normalTemp) {
-			for(BlockPos bp : bigboiler)
-				if(worldObj.getTileEntity(bp) != null)
-					if(worldObj.getTileEntity(bp) instanceof TileEntityBoiler)
-						((TileEntityBoiler)worldObj.getTileEntity(bp)).heat -= 0.05F;
-		} else
-			for(BlockPos bp : bigboiler)
-				if(worldObj.getTileEntity(bp) != null)
-					if(worldObj.getTileEntity(bp) instanceof TileEntityBoiler)
-						((TileEntityBoiler)worldObj.getTileEntity(bp)).heat = (getMJpK() * DataValues.normalTemp) / (float)bigboiler.length;
-		if(getTemperature() > (DataValues.normalTemp + 100)) {
-			steam += waterToSteam((int)((getTemperature() - DataValues.normalTemp) * 0.01F)) * DataValues.LmB * DataValues.VsteamMkg;
-		}
-		if(steam > 0)
-			steam -= handleSteamOutput(worldObj, sinks, steam * DataValues.LmB, steam * DataValues.LmB, boiler_size * bigboiler.length * DataValues.LmB, true);
+		if(worldObj.isRemote) {
+			if(bigboiler.length == 0)
+				createMaster();
+			else if(bigboiler[0] == null)
+				createMaster();
+			if(getTemperature() > DataValues.normalTemp) {
+				for(BlockPos bp : bigboiler)
+					if(worldObj.getTileEntity(bp) != null)
+						if(worldObj.getTileEntity(bp) instanceof TileEntityBoiler)
+							((TileEntityBoiler)worldObj.getTileEntity(bp)).heat -= 0.05F;
+			} else
+				for(BlockPos bp : bigboiler)
+					if(worldObj.getTileEntity(bp) != null)
+						if(worldObj.getTileEntity(bp) instanceof TileEntityBoiler)
+							((TileEntityBoiler)worldObj.getTileEntity(bp)).heat = (getMJpK() * DataValues.normalTemp) / (float)bigboiler.length;
+			if(getTemperature() > (DataValues.normalTemp + 100)) {
+				steam += waterToSteam((int)((getTemperature() - DataValues.normalTemp) * 0.01F)) * DataValues.LmB * DataValues.VsteamMkg;
+			}
+			if(steam > 0)
+				steam -= handleSteamOutput(worldObj, sinks, steam * DataValues.LmB, steam * DataValues.LmB, boiler_size * bigboiler.length * DataValues.LmB, true);
+			}
 		super.update();
 	}
 	
@@ -80,7 +82,7 @@ public class TileEntityBoilerMB extends TileEntityBoiler {
 				if(!sinks.contains(sp))
 					sinks.add(sp);
 		}
-		return super.updateNetwork(world, pos, list);
+		return list;
 	}
 	
 	@Override
